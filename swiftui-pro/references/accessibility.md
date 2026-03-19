@@ -8,6 +8,8 @@
 - If buttons have complex or frequently changing labels, recommend using `accessibilityInputLabels()` to provide better Voice Control commands. For example, if a button had a live-updating share price for Apple such as “AAPL $271.68”, adding an input label for “Apple” would be a big improvement.
 - Buttons with image labels must always include text, even if the text is invisible: `Button("Label", systemImage: "plus", action: myAction)`. Flag icon-only buttons that lack a text label as being bad for VoiceOver.
 - If color is an important differentiator in the user interface, make sure to respect the environment’s `.accessibilityDifferentiateWithoutColor` setting by showing some kind of variation beyond just color – icons, patterns, strokes, etc.
+- When using Liquid Glass (iOS 26+), the system **automatically adapts** for Reduce Transparency — it increases frosting and adds stark colors/borders. You generally don’t need manual handling. Use `@Environment(\.accessibilityReduceTransparency)` with `.glassEffect(.identity)` only when you need to completely disable glass.
+- Check that text remains legible over glass surfaces — glass receives automatic vibrant treatment, but custom colored text may need verification.
 - The same is true of `Menu`: using `Menu("Options", systemImage: "ellipsis.circle") { }` is much better than just using an image.
 - Never use `onTapGesture()` unless you specifically need tap location or tap count. All other tappable elements should be a `Button`.
 - If `onTapGesture()` must be used, make sure to add `.accessibilityAddTraits(.isButton)` or similar so it can be read by VoiceOver correctly.

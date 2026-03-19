@@ -22,6 +22,17 @@ Prefer to place standard fonts, sizes, colors, stack spacing, padding, rounding,
 - When using `RoundedRectangle`, the default rounding style is `.continuous` – there is no need to specify it explicitly.
 
 
+## Liquid Glass design rules (iOS 26+)
+
+- Liquid Glass is **exclusively** for the navigation layer — never apply to content (lists, tables, media).
+- Do not stack glass layers (glass cannot sample other glass). Use `GlassEffectContainer` to group multiple glass elements.
+- Do not add custom shadows or borders to glass elements — the system handles edge effects automatically.
+- Use `.clear` variant only when sitting over media-rich content with bold/bright foreground elements.
+- System auto-adapts glass for Reduce Transparency (increases frosting, adds stark colors/borders). Use `.identity` variant as a manual override when needed.
+- Text on glass receives automatic vibrant treatment with contrast adjustment — don't manually adjust.
+- Corner concentricity: use `.rect(cornerRadius: .containerConcentric)` to auto-match parent corners.
+- Keep glass element count reasonable — each has rendering cost. Profile on target devices.
+
 ## Ensuring designs work for everyone
 
 - Use `bold()` instead of `fontWeight(.bold)`, because using `bold()` allows the system to choose the correct weight for the current context.
