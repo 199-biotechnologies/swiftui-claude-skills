@@ -1,87 +1,93 @@
-# SwiftUI Skills for Claude Code
+# iOS & macOS 26 Skills for Claude Code
 
-**3 battle-tested Claude Code skills for building world-class iOS 26+ apps with Liquid Glass, animations, and modern SwiftUI patterns.**
+**8 production-grade Claude Code skills for building world-class iOS 26 / macOS Tahoe apps.**
 
-Verified against Apple's official WWDC 2025 documentation by a swarm of AI reviewers (Claude Opus 4.6 + GPT-5.4 Codex + Gemini 3.1 Pro).
+Verified against Apple's WWDC 2025 docs + Xcode 26.3 (latest as of March 2026) by a swarm of AI (Claude Opus 4.6 + GPT-5.4 Codex + Gemini 3.1 Pro). Current through iOS 26.4 RC / macOS 26.4 RC (March 18, 2026).
 
 ## The Skills
 
-### `swiftui-liquid-glass` — Liquid Glass API Reference
-Everything you need to implement iOS 26's Liquid Glass design language correctly.
-- Complete `glassEffect` API with all 3 variants (`.regular`, `.clear`, `.identity`)
-- `GlassEffectContainer` morphing, unions, and transitions
-- `tabViewBottomAccessory`, sheet morphing, `backgroundExtensionEffect`
-- Common mistakes that will get your PR rejected
-- Copy-paste snippets that actually compile
+### Custom Skills (by 199 Biotechnologies)
 
-### `swiftui-ux-review` — UI/UX Review Engine
-Automated review checklist for SwiftUI interfaces. Catches the stuff designers complain about.
-- Animation quality audit (springs, timing, accessibility)
-- Liquid Glass compliance checker
-- iOS 26 new APIs: `@Animatable`, `.symbolEffect(.drawOn/.drawOff)`, `ToolbarSpacer`
-- Permission primer patterns (App Store Guideline 5.1.1)
-- Accessibility audit: VoiceOver, Dynamic Type, Reduce Motion/Transparency
+| Skill | What It Does |
+|-------|-------------|
+| **`swiftui-liquid-glass`** | Complete Liquid Glass API — all 3 variants, morphing, unions, `tabViewBottomAccessory`, sheet morphing, common mistakes |
+| **`swiftui-ux-review`** | Automated UI/UX review engine — animations, accessibility, HIG compliance, permission primers, iOS 26 new APIs |
+| **`swiftui-ui-patterns`** | 26 component references — NavigationStack, sheets, forms, loading states, cards, 26+ reference files |
+| **`on-device-ai`** | Foundation Models framework — `@Generable`, `LanguageModelSession`, Tool protocol, streaming, structured output |
 
-### `swiftui-ui-patterns` — Component Patterns Library
-Production SwiftUI patterns extracted from real shipping apps.
-- NavigationStack + Coordinator architecture
-- Sheet routing with enum-driven presentation
-- Loading states, skeleton views, `ContentUnavailableView`
-- Form validation, onboarding flows, card animations
-- 26 component references (TabView, ScrollView, Grids, Searchable, etc.)
+### Included: Paul Hudson's Pro Skills (twostraws)
 
-## What Makes These Different
+| Skill | What It Does |
+|-------|-------------|
+| **`swiftui-pro`** | Comprehensive SwiftUI code review — modern APIs, deprecated detection, performance, VoiceOver, HIG |
+| **`swift-testing-pro`** | Swift Testing framework — `@Test` macro, common LLM mistakes, smaller/faster patterns |
+| **`swift-concurrency-pro`** | Swift 6.2 concurrency — `@concurrent`, actors, `Sendable`, async/await pitfalls |
+| **`swiftdata-pro`** | SwiftData — modeling, queries, relationships, migrations, model inheritance |
 
-Most SwiftUI skills are LLM-generated slop with hallucinated APIs. These were:
+## Why These Exist
 
-1. **Cross-verified** by 3 independent AI models against Apple's actual documentation
-2. **Bug-fixed** — caught the `.prominent` ghost variant that doesn't exist (it's a button style, not a glass variant)
-3. **Complete** — covers iOS 26 APIs that shipped after most training data cutoffs
-4. **Practical** — every snippet is a real pattern from shipping apps, not a toy example
+Most "SwiftUI skills" floating around have hallucinated APIs. We caught these in the wild:
+- `.prominent` listed as a Glass variant (doesn't exist — only `.regular`, `.clear`, `.identity`)
+- `ObservableObject` recommended over `@Observable` (deprecated pattern)
+- Missing 10+ iOS 26 APIs that shipped after training cutoffs
 
-## v3.0.0 Changelog (AI-Verified Update)
+These skills were cross-verified by 3 independent AI models against Apple's actual documentation. Every snippet compiles.
 
-**Critical fixes:**
-- Fixed `.prominent` being listed as a Glass variant (only `.regular`, `.clear`, `.identity` exist)
-- `.glassProminent` is a **button style**, not a glass effect variant
-
-**New iOS 26 APIs added:**
-- `tabViewBottomAccessory { }` — persistent control above tab bar
-- Sheet morphing: `matchedTransitionSource` + `navigationTransition(.zoom)`
-- `ToolbarSpacer` — toolbar layout control
-- `scrollExtensionMode(.underSidebar)` — content under sidebar
-- `backgroundExtensionEffect()` — blur extension for sidebars
-- `.symbolEffect(.drawOn/.drawOff)` with `.wholeSymbol`, `.byLayer`, `.individually`
-- Rich `TextEditor` with `AttributedString` binding
-- Label spacing: `.labelIconToTitleSpacing`, `.labelReservedIconWidth`
-- `glassEffectUnion` for merging controls into single glass shape
-
-**Accessibility improvements:**
-- Documented that iOS 26 auto-adapts glass for Reduce Transparency
-- Added `.identity` variant as manual accessibility fallback
-
-## Installation
-
-Copy the skill folders into your Claude Code skills directory:
+## Quick Install
 
 ```bash
-# Clone
 git clone https://github.com/199-biotechnologies/swiftui-claude-skills.git
-
-# Copy to Claude Code
-cp -r swiftui-claude-skills/swiftui-liquid-glass ~/.claude/skills/
-cp -r swiftui-claude-skills/swiftui-ux-review ~/.claude/skills/
-cp -r swiftui-claude-skills/swiftui-ui-patterns ~/.claude/skills/
+cp -r swiftui-claude-skills/*-pro swiftui-claude-skills/swiftui-* swiftui-claude-skills/on-device-ai ~/.claude/skills/
 ```
+
+## What's Covered
+
+### Liquid Glass (iOS 26)
+`glassEffect` variants, `GlassEffectContainer`, `glassEffectUnion`, `glassEffectID` morphing, `buttonStyle(.glass/.glassProminent)`, `tabViewBottomAccessory`, sheet morphing, `backgroundExtensionEffect`, `scrollExtensionMode`, accessibility auto-adaptation
+
+### Animations
+Spring presets (`.bouncy`/`.smooth`/`.snappy`), `PhaseAnimator`, `KeyframeAnimator`, `matchedGeometryEffect`, `@Animatable`/`@AnimatableIgnored` macros, SF Symbols 7 `.drawOn`/`.drawOff`, haptic feedback, performance optimization
+
+### SwiftUI Patterns
+NavigationStack + Coordinator, enum-driven sheets, `ContentUnavailableView`, skeleton loading, form validation, onboarding flows, card animations, `WebView`/`WebPage`, rich `TextEditor` with `AttributedString`
+
+### On-Device AI
+Foundation Models `LanguageModelSession`, `@Generable` structured output, `@Guide` annotations, Tool protocol for function calling, streaming responses
+
+### Swift 6.2 Concurrency
+`@concurrent`, `nonisolated(nonsending)`, default `@MainActor` isolation, `Task.immediate`, actor-isolated protocol conformances
+
+### Testing
+`@Test` macro, `#expect`, parameterized tests, exit tests, attachments, Swift Testing best practices
+
+### SwiftData
+`@Model`, `@Query`, model inheritance (iOS 26), relationships, migrations, `FetchDescriptor`
+
+## Also Recommended (Not Included)
+
+Install these separately for the full iOS dev experience:
+
+| Tool | What | Install |
+|------|------|---------|
+| [XcodeBuildMCP](https://github.com/getsentry/XcodeBuildMCP) | Build/test/archive from Claude (4.6k stars) | `brew install xcodebuildmcp` |
+| [apple-docs-mcp](https://github.com/kimsungwhee/apple-docs-mcp) | Search Apple docs live | MCP server |
+| [Axiom](https://github.com/CharlesWiltgen/Axiom) | Xcode debugging, compiler diagnostics | Skills bundle |
 
 ## Verified Against
 
-- [Apple: Applying Liquid Glass to custom views](https://developer.apple.com/documentation/SwiftUI/Applying-Liquid-Glass-to-custom-views)
+- [Apple: Applying Liquid Glass](https://developer.apple.com/documentation/SwiftUI/Applying-Liquid-Glass-to-custom-views)
 - [WWDC25 Session 219: Meet Liquid Glass](https://developer.apple.com/videos/play/wwdc2025/219/)
 - [WWDC25 Session 323: Build a SwiftUI app with the new design](https://developer.apple.com/videos/play/wwdc2025/323/)
-- [LiquidGlassReference (Community)](https://github.com/conorluddy/LiquidGlassReference)
 - [Hacking with Swift: What's new in SwiftUI for iOS 26](https://www.hackingwithswift.com/articles/278/whats-new-in-swiftui-for-ios-26)
-- [Donny Wals: Liquid Glass on iOS 26](https://www.donnywals.com/designing-custom-ui-with-liquid-glass-on-ios-26/)
+- [LiquidGlassReference](https://github.com/conorluddy/LiquidGlassReference)
+- [Donny Wals: Liquid Glass](https://www.donnywals.com/designing-custom-ui-with-liquid-glass-on-ios-26/)
+- [Swift 6.2 Released](https://www.swift.org/blog/swift-6.2-released/)
+
+## Credits
+
+- Custom skills by [199 Biotechnologies](https://github.com/199-biotechnologies)
+- Pro skills by [Paul Hudson / twostraws](https://github.com/twostraws) (MIT License)
+- Verified using Claude Opus 4.6, GPT-5.4 Codex, Gemini 3.1 Pro
 
 ## License
 
